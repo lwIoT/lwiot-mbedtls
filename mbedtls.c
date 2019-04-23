@@ -73,6 +73,7 @@ static int ip4_connect(remote_addr_t* addr)
 	return sockfd;
 }
 
+#ifdef HAVE_IP6
 static int ip6_connect(remote_addr_t* addr)
 {
 	struct sockaddr_in6 ip;
@@ -99,6 +100,12 @@ static int ip6_connect(remote_addr_t* addr)
 
 	return sockfd;
 }
+#else
+static int ip6_connect(remote_addr_t* addr)
+{
+	return -1;
+}
+#endif
 
 static void stop_ssl_socket(secure_socket_t *ssl_client, const char *rootCABuff,
 							const char *cli_cert, const char *cli_key)
