@@ -8,6 +8,7 @@
 #include "mbedtls.h"
 
 #include <stdlib.h>
+#include <string.h>
 #include <lwiot.h>
 #include <assert.h>
 #include <unistd.h>
